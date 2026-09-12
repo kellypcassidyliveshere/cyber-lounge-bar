@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber & Juice Bar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 10px 0 30px 0;
+            text-align: center;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+        
+        /* Header Title (2x bigger) & Stock Image */
+        .header-section {
+            margin-bottom: 5px;
+        }
+        h1 {
+            margin: 5px 0;
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .neon-green {
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.7);
+        }
+        .neon-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+        .neon-blue {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+        }
+        
+        .juice-stock-img {
+            width: 90%;
+            max-width: 380px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 255, 0.4);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+            margin: 5px auto;
+            display: block;
+        }
+
+        /* Tabs Styling - 2x bigger font */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 8px 0 12px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 6px;
+        }
+        .tab {
+            font-size: 26px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            padding-bottom: 6px;
+            position: relative;
+        }
+        .tab.active {
+            color: #00f0ff;
+        }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #00f0ff;
+            box-shadow: 0 0 8px #00f0ff;
+        }
+        
+        .tab-content {
+            display: none;
+            flex-grow: 1;
+        }
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        /* Outline Banners */
+        .outline-banner {
+            display: block;
+            width: 90%;
+            max-width: 380px;
+            margin: 5px auto;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid #ff00ff;
+            border-radius: 8px;
+            color: #ff00ff;
+            font-weight: bold;
+            font-size: 13px;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+            text-decoration: none;
+        }
+        
+        /* Enlarged Join Our Community Button */
+        .join-community-btn {
+            font-size: 18px;
+            padding: 14px 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .white-text {
+            color: #ffffff;
+            text-shadow: none;
+        }
+
+        /* Horizontal Drink Scroll Container */
+        .drink-scroll-container {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            width: 100%;
+            background: transparent;
+            padding: 5px 10px;
+            gap: 12px;
+            margin: 5px 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .drink-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .drink-card {
+            flex: 0 0 110px;
+            width: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .drink-card img {
+            width: 95px;
+            height: 95px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 0, 255, 0.5);
+            margin-bottom: 4px;
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+        }
+        .drink-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 2px;
+            text-align: center;
+        }
+        .drink-price {
+            font-size: 11px;
+            color: #00ff66;
+            font-weight: bold;
+        }
+
+        /* Pods Tab Elements & 14 Checkboxes */
+        .form-group {
+            width: 90%;
+            max-width: 380px;
+            margin: 6px auto;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: #00f0ff;
+            margin-bottom: 2px;
+        }
+        .cyber-input {
+            width: 100%;
+            padding: 6px;
+            background-color: #12141c;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+        .pod-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            width: 90%;
+            max-width: 380px;
+            margin: 5px auto;
+        }
+        .pod-checkbox-label {
+            background-color: #12141c;
+            border: 1px solid #00f0ff;
+            border-radius: 6px;
+            padding: 6px 0;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #00f0ff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            box-shadow: 0 0 5px rgba(0, 240, 255, 0.2);
+        }
+        .pod-checkbox-label input {
+            accent-color: #00f0ff;
+            cursor: pointer;
+        }
+
+        /* Footer Info */
+        footer {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #aaaaaa;
+            padding: 0 10px;
+        }
+        footer a {
+            color: #00ff66;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1>
+            <span class="neon-green">CYBER LOUNGE</span><br>
+            <span class="neon-pink">&</span><br>
+ <span class="neon-blue">JUICE BAR</span>
+        </h1>
+        <img src="juicestock.png" alt="Juice Stock" class="juice-stock-img">
+    </div>
+
+    <!-- Tabs Header -->
+    <div class="tabs-container">
+        <div class="tab active" onclick="switchTab('drinks')">DRINKS</div>
+        <div class="tab" onclick="switchTab('pods')">PODS</div>
+    </div>
+
+    <!-- ============= DRINKS TAB ============= -->
+    <div id="drinks-tab" class="tab-content active">
+        <div class="outline-banner">CHOOSE YOUR FLAVOUR</div>
+
+        <!-- Horizontal Scrolling Drink Menu -->
+        <div class="drink-scroll-container">
+            <!-- $10 Drinks -->
+            <a href="addboosters.html?name=Kaleb%20Moon&price=10.00" class="drink-card">
+                <img src="kalebmoon.jpg" alt="Kaleb Moon">
+                <div class="drink-name">Kaleb Moon</div>
+                <div class="drink-price">$10.00</div>
+            </a>
+            
+            <a href="addboosters.html?name=Kiwi%20Crisp&price=10.00" class="drink-card">
+                <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
+                <div class="drink-name">Kiwi Crisp</div>
+                <div class="drink-price">$10.00</div>
+            </a>
+            
+            <a href="addboosters.html?name=Lime%20Rush&price=10.00" class="drink-card">
+                <img src="limerush.jpg" alt="Lime Rush">
+                <div class="drink-name">Lime Rush</div>
+                <div class="drink-price">$10.00</div>
+            </a>
+
+            <!-- $11 Drinks (Yogurt-based) -->
+            <a href="addboosters.html?name=Maia%20Gold&price=11.00" class="drink-card">
+                <img src="maiagold.jpg" alt="Maia Gold">
+                <div class="drink-name">Maia Gold</div>
+                <div class="drink-price">$11.00</div>
+            </a>
+            
+            <a href="addboosters.html?name=Dragonberry%20Dream&price=11.00" class="drink-card">
+                <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
+                <div class="drink-name">Dragonberry Dream</div>
+                <div class="drink-price">$11.00</div>
+            </a>
+            
+            <a href="addboosters.html?name=Cool%20Melon%20Rush&price=11.00" class="drink-card">
+                <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
+                <div class="drink-name">Cool Melon Rush</div>
+                <div class="drink-price">$11.00</div>
+            </a>
+            
+            <a href="addboosters.html?name=Berry%20Choc%20Whirl&price=11.00" class="drink-card">
+                <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
+                <div class="drink-name">Berry Choc Whirl</div>
+                <div class="drink-price">$11.00</div>
+            </a>
+        </div>
+
+        <a href="signup.html" class="outline-banner white-text join-community-btn">JOIN OUR COMMUNITY</a>
+    </div>
+
+    <!-- ============= PODS TAB ============= -->
+    <div id="pods-tab" class="tab-content">
+        <div class="outline-banner">SELECT YOUR POD</div>
+
+        <!-- 14 Numbered Blue Checkboxes -->
+        <div class="pod-grid">
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="1"> 1</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="2"> 2</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="3"> 3</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="4"> 4</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="5"> 5</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="6"> 6</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="7"> 7</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="8"> 8</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="9"> 9</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="10"> 10</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="11"> 11</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="12"> 12</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="13"> 13</label>
+            <label class="pod-checkbox-label"><input type="checkbox" name="pod" value="14"> 14</label>
+        </div>
+
+        <!-- Choose Date -->
+        <div class="form-group">
+            <label for="bookingDate">Choose Date</label>
+            <input type="date" id="bookingDate" class="cyber-input">
+        </div>
+
+        <!-- Timeslot 11am - 11pm -->
+        <div class="form-group">
+            <label for="bookingTime">Select Timeslot (11:00 AM - 11:00 PM)</label>
+            <select id="bookingTime" class="cyber-input">
+                <option value="" disabled selected>Select a time...</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+                <option value="8:00 PM">8:00 PM</option>
+                <option value="9:00 PM">9:00 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+                <option value="11:00 PM">11:00 PM</option>
+            </select>
+        </div>
+    </div>
+
+    <footer>
+        Every sip creates change. We allocate 10% of all profits to fund <a href="https://thefoundationproject.online" target="_blank">thefoundationproject.online</a>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tabName === 'drinks') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('drinks-tab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('pods-tab').classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
