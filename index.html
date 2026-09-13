@@ -47,33 +47,19 @@
       background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(229,228,226,0.05));
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     }
-    .ventures-slider {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-      scroll-behavior: smooth;
-    }
-    .ventures-slider::-webkit-scrollbar {
-      height: 6px;
-    }
-    .ventures-slider::-webkit-scrollbar-thumb {
-      background: #d4af37;
-      border-radius: 3px;
-    }
-    .venture-card {
-      min-width: 240px;
-      background: #0d0d0d;
-      border: 1px solid #d4af37;
-      border-radius: 15px;
-      text-align: center;
-      padding: 25px 15px;
-      flex-shrink: 0;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+.ventures-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 0 20px 20px 20px;
+    width: 100%;
+}
+
+.venture-card {
+    flex: 0 0 85%
+
+
     .venture-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 25px rgba(229, 228, 226, 0.4);
