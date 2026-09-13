@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber & Juice Bar - Customize</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0 0 100px 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        h1 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+        .neon-blue {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+        }
+        .neon-green {
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.7);
+        }
+        .neon-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+        .subtext {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+        
+        /* Customization Option Cards */
+        .options-container {
+            width: 90%;
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-card {
+            background-color: #12141c;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .option-card.selected {
+            background-color: #1a162b;
+            border-color: #00ff66;
+            box-shadow: 0 0 12px rgba(0, 255, 102, 0.4);
+        }
+        .option-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .option-desc {
+            font-size: 12px;
+            color: #aaaaaa;
+            line-height: 1.4;
+            padding-right: 20px;
+        }
+        .option-action {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #aaaaaa;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .option-card.selected .option-action {
+            color: #00ff66;
+        }
+
+        /* Fixed Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #151520;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #333333;
+            z-index: 1000;
+        }
+        .footer-left {
+            text-align: left;
+        }
+        .footer-item-name {
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+        .footer-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff66;
+        }
+        .footer-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-back {
+            background-color: #222530;
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn-order {
+            background: linear-gradient(135deg, #7b00ff, #b000ff);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            box-shadow: 0 0 10px rgba(177, 0, 255, 0.5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <h1>
+        <span class="neon-pink">CUSTOMIZE:</span><br>
+        <span class="neon-blue" id="drinkTitleDisplay">COOL MELON RUSH</span>
+    </h1>
+    <div class="subtext">
+        Enhance your system specs. <span class="neon-green">All scoops are $2.00 each.</span>
+    </div>
+
+    <!-- Options List (All 15 Boosters) -->
+    <div class="options-container" id="optionsContainer">
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Vitamin C</div>
+            <div class="option-desc">High-dose raw ascorbic acid for complete immune defense and antioxidant cell recovery.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Collagen Peptides</div>
+            <div class="option-desc">Pure hydrolysed bovine matrix to support joint structural load, skin elasticity, and cellular repair.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Magnesium Glycinate</div>
+            <div class="option-desc">High-absorption neural driver targeting muscle relaxation, stress modulation, and biological decompression.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Electrolyte Blend</div>
+            <div class="option-desc">Balanced hydration salts optimizing cellular fluid balance and preventing cramping during long grinds.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Prebiotic Fibre</div>
+            <div class="option-desc">Pure clean inulin fueling microflora stabilization, optimal nutrient digestion, and gut boundary health.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Plant Protein Isolate</div>
+            <div class="option-desc">Neutral premium amino structure to sustain physical stamina, muscle synthesis, and fullness curves.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">B-Complex</div>
+            <div class="option-desc">Raw mitochondrial fuel compound supporting daily cellular energy pathways and clear cognitive processing.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Zinc</div>
+            <div class="option-desc">Standardized biological defense catalyst managing immune response integrity and cellular metabolic health.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">L-Glutamine</div>
+            <div class="option-desc">Targeted amino acid sequence optimizing digestive wall density and accelerating post-exertion recovery.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Omega-3 Microcaps</div>
+            <div class="option-desc">Flavourless microencapsulated essential fatty acids prioritizing cardiovascular protection and neural network health.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">L-Carnitine</div>
+            <div class="option-desc">Pure amino transport engine optimizing cellular fatty acid conversion into efficient, active energy output.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Weight-Loss Support</div>
+            <div class="option-desc">Thermogenic botanical blend containing active green tea matrices to accelerate metabolic efficiency safely.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Nootropic Focus</div>
+            <div class="option-desc">Alpha-GPC and L-Theanine neural stacks boosting deep gaming focus, processing speeds, and calm clarity.</div>
+            <div class="option-action">+</div>
+        </div>
+        <div class="option-card" onclick="toggleOption(this)">
+            <div class="option-title">Sleep Support</div>
+            <div class="option-desc">Soothing active mineral and herbal matrix easing system parameters to promote deeper overnight REM rest cycles.</div>
+            <div class="option-action">+</div>
+        </div>
+    </div>
+
+    <!-- Fixed Footer -->
+    <footer>
+        <div class="footer-left">
+            <div class="footer-item-name" id="footerItemName">Cool Melon Rush</div>
+            <div class="footer-price" id="totalPrice">$11.00</div>
+        </div>
+        <div class="footer-buttons">
+            <button class="btn-back" onclick="window.history.back()">BACK</button>
+<button class="btn-order" onclick="const b=[]; document.querySelectorAll('.option-card.selected').forEach(c => b.push(c.querySelector('.option-title').textContent)); window.location.href='payment.html?name=' + encodeURIComponent(document.getElementById('footerItemName').textContent) + '&price=' + encodeURIComponent(document.getElementById('totalPrice').textContent.replace('$', '')) + (b.length ? '&boosters=' + encodeURIComponent(b.join(',')) : '');">ADD TO ORDER</button>
+
+        </div>
+    </footer>
+
+    <script>
+        // Price lookup map for all signature drinks
+        const drinkPrices = {
+            "kaleb moon": 10.00,
+            "kiwi crisp": 10.00,
+            "lime rush": 10.00,
+            "maia gold": 11.00,
+            "dragonberry dream": 11.00,
+            "cool melon rush": 11.00,
+            "berry choc whirl": 11.00
+        };
+
+        // Read URL parameters passed from index.html
+        const urlParams = new URLSearchParams(window.location.search);
+        const drinkName = urlParams.get('name') || 'Cool Melon Rush';
+        const lowerName = drinkName.toLowerCase().trim();
+
+        // Determine base price from URL parameter or fallback to the price map dictionary
+        let basePrice = parseFloat(urlParams.get('price'));
+        if (isNaN(basePrice)) {
+            basePrice = drinkPrices[lowerName] || 10.00;
+        }
+
+        // Apply dynamic content
+        document.getElementById('drinkTitleDisplay').textContent = drinkName.toUpperCase();
+        document.getElementById('footerItemName').textContent = drinkName;
+        document.getElementById('totalPrice').textContent = '$' + basePrice.toFixed(2);
+
+        const scoopPrice = 2.00;
+
+        function toggleOption(card) {
+            card.classList.toggle('selected');
+            
+            const actionSymbol = card.querySelector('.option-action');
+            if (card.classList.contains('selected')) {
+                actionSymbol.textContent = '✓';
+            } else {
+                actionSymbol.textContent = '+';
+            }
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const selectedCount = document.querySelectorAll('.option-card.selected').length;
+            const currentTotal = basePrice + (selectedCount * scoopPrice);
+            document.getElementById('totalPrice').textContent = '$' + currentTotal.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
+
