@@ -44,33 +44,21 @@
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
         }
         
-        /* Scrolling Marquee Container */
-        .marquee-container {
+        /* Main Banner Image (juicestock.png) */
+        .juice-stock-container {
             width: 90%;
             max-width: 400px;
-            height: 140px;
+            height: 130px;
             margin: 5px auto;
-            overflow: hidden;
             border-radius: 10px;
             border: 1px solid rgba(255, 0, 255, 0.4);
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-            background: #0a0a0a;
-            position: relative;
+            overflow: hidden;
         }
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: scrollMarquee 25s linear infinite;
-        }
-        .marquee-track img {
-            width: 220px;
-            height: 140px;
+        .juice-stock-container img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-right: 1px solid rgba(255, 0, 255, 0.2);
-        }
-        @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
         }
 
         .tabs-container {
@@ -117,42 +105,68 @@
             font-size: 16px;
             letter-spacing: 1px;
         }
+        
+        /* Drink Circles Grid */
         .items-grid {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             margin: 20px 0;
             flex-wrap: wrap;
         }
         .item-card {
             background: #0a0a0a;
-            border: 1px solid #ff00ff;
+            border: 2px solid #ff00ff;
             border-radius: 50%;
-            width: 105px;
-            height: 105px;
+            width: 110px;
+            height: 110px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0 12px rgba(255, 0, 255, 0.4);
-            padding: 5px;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
             transition: transform 0.2s;
         }
         .item-card:hover {
             transform: scale(1.05);
         }
+        .item-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+        }
+        .item-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+        }
         .item-name {
             font-size: 11px;
             font-weight: bold;
             color: #ffffff;
-            margin-top: 4px;
+            text-shadow: 0 1px 3px #000;
         }
         .item-price {
             font-size: 11px;
             color: #00ff66;
+            text-shadow: 0 1px 3px #000;
         }
+
         .community-btn-container {
             padding: 15px;
             margin-bottom: 10px;
@@ -237,27 +251,9 @@
             <h1 class="neon-blue" style="font-size: 32px;">JUICE BAR</h1>
         </div>
 
-        <!-- Scrolling Banner (juicestock.png + all 7 drink images right-to-left) -->
-        <div class="marquee-container">
-            <div class="marquee-track">
-                <img src="juicestock.png" alt="Juice Stock">
-                <img src="kalebmoon.jpg" alt="Kaleb Moon">
-                <img src="maiagold.jpg" alt="Maia Gold">
-                <img src="limerush.jpg" alt="Lime Rush">
-                <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
-                <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
-                <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
-                <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
-                <!-- Duplicate set for seamless infinite scroll loop -->
-                <img src="juicestock.png" alt="Juice Stock">
-                <img src="kalebmoon.jpg" alt="Kaleb Moon">
-                <img src="maiagold.jpg" alt="Maia Gold">
-                <img src="limerush.jpg" alt="Lime Rush">
-                <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
-                <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
-                <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
-                <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
-            </div>
+        <!-- Main Banner Image -->
+        <div class="juice-stock-container">
+            <img src="juicestock.png" alt="Juice Stock Banner">
         </div>
 
         <!-- Navigation Tabs -->
@@ -274,39 +270,53 @@
 
             <div class="items-grid">
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Kaleb Moon', 10.00)">
-                    <span style="font-size: 20px;">🍇</span>
-                    <div class="item-name">Kaleb Moon</div>
-                    <div class="item-price">$10.00</div>
+                    <img src="kalebmoon.jpg" alt="Kaleb Moon">
+                    <div class="item-content">
+                        <div class="item-name">Kaleb Moon</div>
+                        <div class="item-price">$10.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Maia Gold', 10.00)">
-                    <span style="font-size: 20px;">🍍</span>
-                    <div class="item-name">Maia Gold</div>
-                    <div class="item-price">$10.00</div>
+                    <img src="maiagold.jpg" alt="Maia Gold">
+                    <div class="item-content">
+                        <div class="item-name">Maia Gold</div>
+                        <div class="item-price">$10.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Lime Rush', 10.00)">
-                    <span style="font-size: 20px;">🍋</span>
-                    <div class="item-name">Lime Rush</div>
-                    <div class="item-price">$10.00</div>
+                    <img src="limerush.jpg" alt="Lime Rush">
+                    <div class="item-content">
+                        <div class="item-name">Lime Rush</div>
+                        <div class="item-price">$10.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Berry Choc', 11.00)">
-                    <span style="font-size: 20px;">🍓</span>
-                    <div class="item-name">Berry Choc</div>
-                    <div class="item-price">$11.00</div>
+                    <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
+                    <div class="item-content">
+                        <div class="item-name">Berry Choc</div>
+                        <div class="item-price">$11.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Dragonberry', 11.00)">
-                    <span style="font-size: 20px;">🐉</span>
-                    <div class="item-name">Dragonberry</div>
-                    <div class="item-price">$11.00</div>
+                    <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
+                    <div class="item-content">
+                        <div class="item-name">Dragonberry</div>
+                        <div class="item-price">$11.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Kiwi Crisp', 10.00)">
-                    <span style="font-size: 20px;">🥝</span>
-                    <div class="item-name">Kiwi Crisp</div>
-                    <div class="item-price">$10.00</div>
+                    <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
+                    <div class="item-content">
+                        <div class="item-name">Kiwi Crisp</div>
+                        <div class="item-price">$10.00</div>
+                    </div>
                 </a>
                 <a href="addbooster.html" class="item-card" onclick="selectDrink('Cool Melon', 10.00)">
-                    <span style="font-size: 20px;">🍈</span>
-                    <div class="item-name">Cool Melon</div>
-                    <div class="item-price">$10.00</div>
+                    <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
+                    <div class="item-content">
+                        <div class="item-name">Cool Melon</div>
+                        <div class="item-price">$10.00</div>
+                    </div>
                 </a>
             </div>
         </div>
