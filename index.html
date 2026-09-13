@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinity Link</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 30px 15px 15px;
+      background: #000;
+    }
+    header img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #d4af37;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      padding: 10px 20px 40px;
+    }
+    .section-title {
+      text-align: center;
+      color: #e5e4e2;
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 450px;
+      margin: 30px auto;
+      padding: 12px;
+      font-size: 1.3rem;
+      letter-spacing: 1.5px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(229,228,226,0.05));
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+    .ventures-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      scroll-behavior: smooth;
+    }
+    .ventures-slider::-webkit-scrollbar {
+      height: 6px;
+    }
+    .ventures-slider::-webkit-scrollbar-thumb {
+      background: #d4af37;
+      border-radius: 3px;
+    }
+    .venture-card {
+      min-width: 240px;
+      background: #0d0d0d;
+      border: 1px solid #d4af37;
+      border-radius: 15px;
+      text-align: center;
+      padding: 25px 15px;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .venture-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(229, 228, 226, 0.4);
+    }
+    .venture-card h3 {
+      color: #d4af37;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .venture-card p {
+      color: #cccccc;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+    .community-section {
+      text-align: center;
+      margin: 60px 0 80px;
+      padding: 0 20px;
+    }
+    .btn-community {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4af37, #997a15);
+      color: #000;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-community:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(229, 228, 226, 0.8);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      color: #999999;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body onload="scrollToStart()">
+
+  <header>
+    <img src="logo.png" alt="Infinity Link Logo">
+  </header>
+
+  <div class="tagline">
+    Where interconnected ventures fuel purpose, elevate experiences, and architect the future.
+  </div>
+
+  <div class="section-title">THE ECOSYSTEM</div>
+
+  <div class="ventures-slider" id="venturesSlider">
+    <div class="venture-card">
+      <h3>The Foundation Project</h3>
+      <p>Social impact engine funding support for victims of abuse, homelessness, and disabilities.</p>
+    </div>
+    <div class="venture-card">
+      <h3>Cyber Lounge &amp; Juice Bar</h3>
+      <p>Physical brick-and-mortar flagship featuring signature beverages, accessories, and social space.</p>
+    </div>
+    <div class="venture-card">
+      <h3>Clubhouse</h3>
+      <p>Multi-dimensional social and physical spaces designed for community engagement and connection.</p>
+    </div>
+    <div class="venture-card">
+      <h3>Consulting</h3>
+      <p>High-level system architecture, strategic advisory, compliance, and venture scaling.</p>
+    </div>
+    <div class="venture-card">
+      <h3>Venture Hub</h3>
+      <p>Incubation and operational alignment for interconnected commercial and digital ecosystems.</p>
+    </div>
+  </div>
+
+  <div class="community-section">
+    <a href="https://thefoundationproject.online" target="_blank" class="btn-community">JOIN OUR COMMUNITY</a>
+  </div>
+
+  <footer>
+    Copyright &copy; Infinity Link 2026
+  </footer>
+
+  <script>
+    // Right-to-left visual scroll start position
+    function scrollToStart() {
+      const slider = document.getElementById('venturesSlider');
+      if (slider) {
+        slider.scrollLeft = slider.scrollWidth;
+      }
+    }
+  </script>
+</body>
+</html>
