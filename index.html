@@ -31,9 +31,9 @@
             font-weight: 900;
             line-height: 1.2;
         }
-        .neon-yellow {
-            color: #FFEA00;
-            text-shadow: 0 0 10px rgba(255, 234, 0, 0.7), 0 0 20px rgba(255, 234, 0, 0.5);
+        .neon-purple {
+            color: #bf00ff;
+            text-shadow: 0 0 10px rgba(191, 0, 255, 0.7), 0 0 20px rgba(191, 0, 255, 0.5);
         }
         .neon-pink {
             color: #ff00ff;
@@ -43,17 +43,36 @@
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
         }
-        .juice-stock-img {
+        
+        /* Scrolling Marquee Container */
+        .marquee-container {
             width: 90%;
-            max-width: 380px;
-            height: 120px;
-            object-fit: cover;
+            max-width: 400px;
+            height: 140px;
+            margin: 5px auto;
+            overflow: hidden;
             border-radius: 10px;
             border: 1px solid rgba(255, 0, 255, 0.4);
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-            margin: 5px auto;
-            display: block;
+            background: #0a0a0a;
+            position: relative;
         }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scrollMarquee 25s linear infinite;
+        }
+        .marquee-track img {
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-right: 1px solid rgba(255, 0, 255, 0.2);
+        }
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -100,8 +119,8 @@
         }
         .items-grid {
             display: flex;
-            justify-content: space-around;
-            gap: 10px;
+            justify-content: center;
+            gap: 15px;
             margin: 20px 0;
             flex-wrap: wrap;
         }
@@ -118,6 +137,7 @@
             cursor: pointer;
             box-shadow: 0 0 12px rgba(255, 0, 255, 0.4);
             padding: 5px;
+            text-decoration: none;
             transition: transform 0.2s;
         }
         .item-card:hover {
@@ -212,13 +232,33 @@
     <div>
         <!-- Header Section -->
         <div class="header-section">
-            <h1 class="neon-yellow">CYBER LOUNGE</h1>
+            <h1 class="neon-purple">CYBER LOUNGE</h1>
             <h1 class="neon-pink" style="font-size: 24px;">&amp;</h1>
             <h1 class="neon-blue" style="font-size: 32px;">JUICE BAR</h1>
         </div>
 
-        <!-- Stock Image Banner -->
-        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Juice Splash" class="juice-stock-img">
+        <!-- Scrolling Banner (juicestock.png + all 7 drink images right-to-left) -->
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <img src="juicestock.png" alt="Juice Stock">
+                <img src="kalebmoon.jpg" alt="Kaleb Moon">
+                <img src="maiagold.jpg" alt="Maia Gold">
+                <img src="limerush.jpg" alt="Lime Rush">
+                <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
+                <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
+                <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
+                <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
+                <!-- Duplicate set for seamless infinite scroll loop -->
+                <img src="juicestock.png" alt="Juice Stock">
+                <img src="kalebmoon.jpg" alt="Kaleb Moon">
+                <img src="maiagold.jpg" alt="Maia Gold">
+                <img src="limerush.jpg" alt="Lime Rush">
+                <img src="berrychocwhirl.jpg" alt="Berry Choc Whirl">
+                <img src="dragonberrydream.jpg" alt="Dragonberry Dream">
+                <img src="kiwicrisp.jpg" alt="Kiwi Crisp">
+                <img src="coolmelonrush.jpg" alt="Cool Melon Rush">
+            </div>
+        </div>
 
         <!-- Navigation Tabs -->
         <div class="tabs-container">
@@ -233,24 +273,42 @@
             </div>
 
             <div class="items-grid">
-                <div class="item-card" onclick="addToOrder('Kaleb Moon', 10.00)">
-                    <span style="font-size: 22px;">🍇</span>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Kaleb Moon', 10.00)">
+                    <span style="font-size: 20px;">🍇</span>
                     <div class="item-name">Kaleb Moon</div>
                     <div class="item-price">$10.00</div>
-                </div>
-                <div class="item-card" onclick="addToOrder('Kiwi Crisp', 10.00)">
-                    <span style="font-size: 22px;">🥝</span>
-                    <div class="item-name">Kiwi Crisp</div>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Maia Gold', 10.00)">
+                    <span style="font-size: 20px;">🍍</span>
+                    <div class="item-name">Maia Gold</div>
                     <div class="item-price">$10.00</div>
-                </div>
-                <div class="item-card" onclick="addToOrder('Lime Rush', 10.00)">
-                    <span style="font-size: 22px;">🍋</span>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Lime Rush', 10.00)">
+                    <span style="font-size: 20px;">🍋</span>
                     <div class="item-name">Lime Rush</div>
                     <div class="item-price">$10.00</div>
-                </div>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Berry Choc', 11.00)">
+                    <span style="font-size: 20px;">🍓</span>
+                    <div class="item-name">Berry Choc</div>
+                    <div class="item-price">$11.00</div>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Dragonberry', 11.00)">
+                    <span style="font-size: 20px;">🐉</span>
+                    <div class="item-name">Dragonberry</div>
+                    <div class="item-price">$11.00</div>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Kiwi Crisp', 10.00)">
+                    <span style="font-size: 20px;">🥝</span>
+                    <div class="item-name">Kiwi Crisp</div>
+                    <div class="item-price">$10.00</div>
+                </a>
+                <a href="addbooster.html" class="item-card" onclick="selectDrink('Cool Melon', 10.00)">
+                    <span style="font-size: 20px;">🍈</span>
+                    <div class="item-name">Cool Melon</div>
+                    <div class="item-price">$10.00</div>
+                </a>
             </div>
-
-            <a href="addbooster.html" class="action-button">ADD BOOSTERS &amp; EXTRAS</a>
         </div>
 
         <!-- PODS SECTION -->
@@ -285,18 +343,18 @@
                 <label for="timeslot">Select Timeslot (11:00 AM - 11:00 PM)</label>
                 <select id="timeslot" class="form-control">
                     <option value="">Select a time...</option>
-                    <option value="11:00 AM">11:00 AM - 12:00 PM</option>
-                    <option value="12:00 PM">12:00 PM - 1:00 PM</option>
-                    <option value="1:00 PM">1:00 PM - 2:00 PM</option>
-                    <option value="2:00 PM">2:00 PM - 3:00 PM</option>
-                    <option value="3:00 PM">3:00 PM - 4:00 PM</option>
-                    <option value="4:00 PM">5:00 PM - 5:00 PM</option>
-                    <option value="5:00 PM">5:00 PM - 6:00 PM</option>
-                    <option value="6:00 PM">6:00 PM - 7:00 PM</option>
-                    <option value="7:00 PM">7:00 PM - 8:00 PM</option>
-                    <option value="8:00 PM">8:00 PM - 9:00 PM</option>
-                    <option value="9:00 PM">9:00 PM - 10:00 PM</option>
-                    <option value="10:00 PM">10:00 PM - 11:00 PM</option>
+                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                    <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                    <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                    <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                    <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+                    <option value="6:00 PM - 7:00 PM">6:00 PM - 7:00 PM</option>
+                    <option value="7:00 PM - 8:00 PM">7:00 PM - 8:00 PM</option>
+                    <option value="8:00 PM - 9:00 PM">8:00 PM - 9:00 PM</option>
+                    <option value="9:00 PM - 10:00 PM">9:00 PM - 10:00 PM</option>
+                    <option value="10:00 PM - 11:00 PM">10:00 PM - 11:00 PM</option>
                 </select>
             </div>
 
@@ -330,15 +388,10 @@
             }
         }
 
-        function addToOrder(itemName, itemPrice) {
+        function selectDrink(itemName, itemPrice) {
             runningTotal += itemPrice;
-            document.getElementById('running-total').innerText = runningTotal.toFixed(2);
-            
-            // Save state to sessionStorage so addbooster.html can read it
             sessionStorage.setItem('runningTotal', runningTotal.toFixed(2));
-            
-            // Optional mini notification alert or smooth transition
-            alert(itemName + " added to your order!");
+            sessionStorage.setItem('selectedDrink', itemName);
         }
 
         function confirmBooking() {
@@ -354,7 +407,6 @@
             alert('Booking confirmed for Pod ' + selectedPod.value + ' on ' + bookingDate + ' at ' + timeslot + '!');
         }
 
-        // Load running total if returning from booster page
         window.onload = function() {
             const savedTotal = sessionStorage.getItem('runningTotal');
             if (savedTotal) {
